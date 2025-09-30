@@ -1,17 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Simulador de Cajero</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulador de Cajero Automatico</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>">
+
 </head>
 <body>
-  <h1>Bienvenido a Cajeros Anónimos</h1>
-  <p>
-    Aquí usted podrá interactuar con un cajero automático 
-    ficticio, pudiendo consultar su saldo, realizar depósitos y extracciones 
-    de dinero. <br/>Se utilizan variables, arrays, funciones, ciclos y condicionales 
-    en JavaScript para simular las operaciones bancarias.
-  </p>
+  <main class="contenedor">
+    <header>
+      <h1>Bienvenido a Cajeros Anónimos</h1>
+    </header>
+
+    <section class="panel">
+      <div class="tarjeta-saldo">
+        <h2>Saldo</h2>
+        <p id="saldoTexto">$0.00</p>
+      </div>
+
+      <div class="operaciones">
+        <h3>Operaciones</h3>
+
+        <div class="fila-formulario">
+          <label for="montoIngresado">Monto</label>
+          <input id="montoIngresado" type="number" min="0" step="0.01" placeholder="Ej: 1500.50" />
+        </div>
+
+        <div class="fila-botones">
+          <button id="botonDepositar" class="boton">Depositar</button>
+          <button id="botonRetirar" class="boton">Retirar</button>
+        </div>
+
+        <div class="controles">
+          <button id="botonLimpiarHistorial" class="boton chico">Limpiar historial</button>
+        </div>
+
+        <div id="mensaje" class="mensaje" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="historial-seccion">
+      <h3>Historial de Movimientos</h3>
+
+      <div class="filtros">
+        <label>Mostrar:
+          <select id="selectorFiltro">
+            <option value="todos">Todos</option>
+            <option value="deposito">Depósitos</option>
+            <option value="retiro">Retiros</option>
+          </select>
+        </label>
+      </div>
+
+      <ul id="listaHistorial" class="lista-historial"></ul>
+    </section>
+
+    <footer>
+      <small>Entrega 2 — Cajero automático</small>
+    </footer>
+  </main>
 
   <script src="main.js"></script>
 </body>
