@@ -1,67 +1,89 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Simulador de Cajero Automatico</title>
-  <link rel="stylesheet" href="estilos.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simulador de Cajero Automatico</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>"
+    />
+  </head>
+  <body>
+    <main class="contenedor">
+      <!-- Saludo dinámico -->
+      <div id="saludo" class="saludo"></div>
 
-</head>
-<body>
-  <main class="contenedor">
-    <header>
-      <h1>Bienvenido a Cajeros Anónimos</h1>
-    </header>
-
-    <section class="panel">
-      <div class="tarjeta-saldo">
-        <h2>Saldo</h2>
-        <p id="saldoTexto">$0.00</p>
+      <!-- Selector de divisa -->
+      <div>
+        <h3>¿Qué divisa desea utilizar?</h3>
       </div>
+      <label for="divisa">Seleccionar divisa:</label>
+      <select id="divisa">
+        <option value="pesos">Pesos</option>
+        <option value="dolares">Dólares</option>
+      </select>
 
-      <div class="operaciones">
-        <h3>Operaciones</h3>
-
-        <div class="fila-formulario">
-          <label for="montoIngresado">Monto</label>
-          <input id="montoIngresado" type="number" min="0" step="0.01" placeholder="Ej: 1500.50" />
+      <section class="panel">
+        <div class="tarjeta-saldo">
+          <h2>Saldo</h2>
+          <p id="saldoTexto">$0.00</p>
         </div>
 
-        <div class="fila-botones">
-          <button id="botonDepositar" class="boton">Depositar</button>
-          <button id="botonRetirar" class="boton">Retirar</button>
+        <div class="operaciones">
+          <h3>Operaciones</h3>
+
+          <div class="fila-formulario">
+            <label for="montoIngresado">Monto</label>
+            <input
+              id="montoIngresado"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Ej: 1500"
+            />
+          </div>
+
+          <div class="fila-botones">
+            <button id="botonDepositar" class="boton">Depositar</button>
+            <button id="botonRetirar" class="boton">Retirar</button>
+          </div>
+
+          <div class="controles">
+            <button id="botonLimpiarHistorial" class="boton chico">
+              Limpiar historial
+            </button>
+          </div>
+
+          <div id="mensaje" class="mensaje" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="historial-seccion">
+        <h3>Historial de Movimientos</h3>
+
+        <div class="filtros">
+          <label
+            >Mostrar:
+            <select id="selectorFiltro">
+              <option value="todos">Todos</option>
+              <option value="deposito">Depósitos</option>
+              <option value="retiro">Retiros</option>
+            </select>
+          </label>
         </div>
 
-        <div class="controles">
-          <button id="botonLimpiarHistorial" class="boton chico">Limpiar historial</button>
-        </div>
+        <ul id="listaHistorial" class="lista-historial"></ul>
+      </section>
 
-        <div id="mensaje" class="mensaje" aria-live="polite"></div>
-      </div>
-    </section>
+      <footer>
+        <small>Cajero automático - Anónimos S.A.</small>
+      </footer>
+    </main>
 
-    <section class="historial-seccion">
-      <h3>Historial de Movimientos</h3>
-
-      <div class="filtros">
-        <label>Mostrar:
-          <select id="selectorFiltro">
-            <option value="todos">Todos</option>
-            <option value="deposito">Depósitos</option>
-            <option value="retiro">Retiros</option>
-          </select>
-        </label>
-      </div>
-
-      <ul id="listaHistorial" class="lista-historial"></ul>
-    </section>
-
-    <footer>
-      <small>Entrega 2 — Cajero automático</small>
-    </footer>
-  </main>
-
-  <script src="main.js"></script>
-</body>
+    <script src="main.js"></script>
+    <script src="interfaz.js"></script>
+    <script src="operaciones.js"></script>
+  </body>
 </html>
